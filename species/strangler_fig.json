@@ -1,0 +1,30 @@
+{
+  "name": "Strangler Fig",
+  "description": "A relentless climber with ambitious roots.",
+  "stat_weights": {
+    "health": 1.0,
+    "growth": 1.5,
+    "hydration": 1.1,
+    "curiosity": 1.3,
+    "rootedness": 1.4
+  },
+  "stage_thresholds": [0, 135, 355, 740, 1360],
+  "stage_art": {
+    "seed": ".",
+    "sprout": " /\\\n ||",
+    "juvenile": " /\\/\\\n ||||\n  ||",
+    "mature": " /\\/\\/\\\n ||||||\n  ||||",
+    "ancient": " /\\/\\/\\/\\\n ||||||||\n  ||||||"
+  },
+  "rare_variants": {
+    "mature": {
+      "curiosity": "labyrinth vine",
+      "growth": "crown-bridge fig"
+    },
+    "ancient": {
+      "rootedness": "catacomb fig",
+      "hydration": "monsoon fig"
+    }
+  },
+  "flavor_adjectives": ["wild", "inventive", "tenacious", "mythic"]
+}

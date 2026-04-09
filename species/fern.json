@@ -1,0 +1,30 @@
+{
+  "name": "Fern",
+  "description": "A fast-adapting companion with lush fronds.",
+  "stat_weights": {
+    "health": 1.1,
+    "growth": 1.3,
+    "hydration": 1.4,
+    "curiosity": 1.0,
+    "rootedness": 1.2
+  },
+  "stage_thresholds": [0, 120, 300, 650, 1200],
+  "stage_art": {
+    "seed": ".",
+    "sprout": " .\n/|\\",
+    "juvenile": " \\|/\n--*--\n / \\",
+    "mature": " \\|||/\n--***--\n / | \\",
+    "ancient": " \\|||||/\n--*****--\n /  |  \\"
+  },
+  "rare_variants": {
+    "mature": {
+      "hydration": "dew-crowned fronds",
+      "growth": "spiral canopy"
+    },
+    "ancient": {
+      "rootedness": "cathedral fern",
+      "curiosity": "silver-vein fern"
+    }
+  },
+  "flavor_adjectives": ["verdant", "gentle", "observant", "resilient"]
+}

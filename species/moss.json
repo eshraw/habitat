@@ -1,0 +1,30 @@
+{
+  "name": "Moss",
+  "description": "A soft cluster that thrives through steady attention.",
+  "stat_weights": {
+    "health": 1.2,
+    "growth": 1.1,
+    "hydration": 1.5,
+    "curiosity": 0.8,
+    "rootedness": 1.3
+  },
+  "stage_thresholds": [0, 100, 260, 560, 1020],
+  "stage_art": {
+    "seed": ".",
+    "sprout": "..\n::",
+    "juvenile": "....\n::::",
+    "mature": "......\n::::::\n  ||",
+    "ancient": "........\n::::::::\n  ||||"
+  },
+  "rare_variants": {
+    "mature": {
+      "hydration": "mist-laced moss",
+      "rootedness": "stonebound moss"
+    },
+    "ancient": {
+      "health": "emerald blanket",
+      "curiosity": "starlight moss"
+    }
+  },
+  "flavor_adjectives": ["calm", "cozy", "quiet", "persistent"]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "Bonsai",
+  "description": "A disciplined tree shaped by patient craft.",
+  "stat_weights": {
+    "health": 1.2,
+    "growth": 0.9,
+    "hydration": 1.0,
+    "curiosity": 1.1,
+    "rootedness": 1.6
+  },
+  "stage_thresholds": [0, 150, 390, 820, 1500],
+  "stage_art": {
+    "seed": ".",
+    "sprout": " |\n/ \\",
+    "juvenile": " _\n/ \\\n |",
+    "mature": " _/_\n/   \\\n  | |",
+    "ancient": " _/_/_\n/     \\\n   | |"
+  },
+  "rare_variants": {
+    "mature": {
+      "rootedness": "stone-trained bonsai",
+      "curiosity": "wind-script bonsai"
+    },
+    "ancient": {
+      "health": "gold-vein bonsai",
+      "growth": "storm-tempered bonsai"
+    }
+  },
+  "flavor_adjectives": ["deliberate", "balanced", "attentive", "wise"]
+}
