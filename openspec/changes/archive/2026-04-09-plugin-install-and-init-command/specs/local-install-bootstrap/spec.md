@@ -1,4 +1,4 @@
-## ADDED Requirements
+## MODIFIED Requirements
 
 ### Requirement: Installer provisions required Claude assets
 The installer SHALL place or update Habitat command and hook files into the user's Claude directories required for runtime behavior, with plugin-based installation as the primary onboarding path and script-based install as compatibility fallback.

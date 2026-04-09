@@ -2,7 +2,8 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STATE_DIR="${HOME}/.habitat"
+TEST_HOME="${ROOT_DIR}/.tmp/test-home-hooks"
+STATE_DIR="${TEST_HOME}/.habitat"
 STATE_FILE="${STATE_DIR}/plant.json"
 
 mkdir -p "${STATE_DIR}"
@@ -12,7 +13,7 @@ run_and_assert_silent() {
   local script="$1"
   local payload="$2"
   local out
-  out="$(printf "%s" "${payload}" | bash "${script}")"
+  out="$(printf "%s" "${payload}" | HABITAT_HOME="${STATE_DIR}" bash "${script}")"
   if [ -n "${out}" ]; then
     echo "expected no stdout from ${script}" >&2
     exit 1

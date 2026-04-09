@@ -20,9 +20,25 @@ Habitat is a Claude Code companion system. It gives you a living plant that evol
 - `bash`
 - `jq`
 
+## Claude CLI Compatibility
+
+- Minimum supported Claude CLI: `1.0.0` (declared in `claude-plugin.json`).
+
 ## Install
 
-From this repository root:
+Recommended (plugin-first):
+
+```bash
+claude plugin add habitat
+```
+
+Then run:
+
+```text
+/habitat-init
+```
+
+Compatibility fallback (repository install script):
 
 ```bash
 ./install.sh
@@ -33,6 +49,7 @@ Installer behavior:
 - Creates `~/.claude/hooks`, `~/.claude/commands`, and `~/.habitat` if needed.
 - Copies hooks and command template into your Claude directories.
 - Is idempotent: re-running updates files without duplicate setup.
+- Prints plugin-first guidance (`claude plugin add habitat` + `/habitat-init`).
 
 ## Hook behavior (v1)
 
@@ -49,6 +66,8 @@ Run both scripts after changes:
 ```bash
 ./scripts/validate_species.sh
 ./scripts/verify_hooks.sh
+./scripts/verify_plugin_flow.sh
+./scripts/verify_migration.sh
 ```
 
 What they verify:
@@ -56,3 +75,5 @@ What they verify:
 - Species schema shape and required fields.
 - State initialization, event mutations, and stop-session behavior.
 - Hooks remain silent on stdout (non-interactive behavior).
+- Plugin metadata and `/habitat-init` idempotency.
+- Migration fallback behavior for users coming from script-based setup.

@@ -37,12 +37,8 @@ default_state_for_species() {
 }
 
 random_species() {
-  local choices=""
-  local f
-  for f in "${SPECIES_DIR}"/*.json; do
-    [ -e "${f}" ] || continue
-    choices="${choices}$(basename "${f}" .json)"$'\n'
-  done
+  local choices
+  choices="$(ls "${SPECIES_DIR}"/*.json 2>/dev/null | xargs -n1 basename | sed 's/.json$//')"
   if [ -z "${choices}" ]; then
     echo "fern"
     return

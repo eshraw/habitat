@@ -1,0 +1,19 @@
+{
+  "species": "fern",
+  "stage": 0,
+  "name": null,
+  "dormant": false,
+  "born": "2026-04-09T14:27:14Z",
+  "last_seen": "2026-04-09T14:27:14Z",
+  "stats": {
+    "health": 80,
+    "growth": 45,
+    "hydration": 60,
+    "curiosity": 70,
+    "rootedness": 55
+  },
+  "xp": 0,
+  "sessions": 0,
+  "seen_commands": [],
+  "milestones": []
+}

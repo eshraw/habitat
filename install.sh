@@ -4,6 +4,7 @@ set -euo pipefail
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SRC_HOOKS_DIR="${ROOT_DIR}/hooks"
 SRC_COMMANDS_DIR="${ROOT_DIR}/.claude/commands"
+SRC_SCRIPTS_DIR="${ROOT_DIR}/scripts"
 
 CLAUDE_DIR="${HOME}/.claude"
 DEST_HOOKS_DIR="${CLAUDE_DIR}/hooks"
@@ -23,13 +24,25 @@ require_cmd jq
 
 mkdir -p "${DEST_HOOKS_DIR}" "${DEST_COMMANDS_DIR}" "${HABITAT_DIR}"
 
-cp "${SRC_HOOKS_DIR}/lib.sh" "${DEST_HOOKS_DIR}/lib.sh"
-cp "${SRC_HOOKS_DIR}/on_tool.sh" "${DEST_HOOKS_DIR}/habitat_on_tool.sh"
-cp "${SRC_HOOKS_DIR}/on_stop.sh" "${DEST_HOOKS_DIR}/habitat_on_stop.sh"
-cp "${SRC_COMMANDS_DIR}/habitat.md" "${DEST_COMMANDS_DIR}/habitat.md"
+copy_if_changed() {
+  local src="$1"
+  local dest="$2"
+  if [ -f "${dest}" ] && cmp -s "${src}" "${dest}"; then
+    return
+  fi
+  cp "${src}" "${dest}"
+}
 
-chmod +x "${DEST_HOOKS_DIR}/habitat_on_tool.sh" "${DEST_HOOKS_DIR}/habitat_on_stop.sh"
+copy_if_changed "${SRC_HOOKS_DIR}/lib.sh" "${DEST_HOOKS_DIR}/lib.sh"
+copy_if_changed "${SRC_HOOKS_DIR}/on_tool.sh" "${DEST_HOOKS_DIR}/habitat_on_tool.sh"
+copy_if_changed "${SRC_HOOKS_DIR}/on_stop.sh" "${DEST_HOOKS_DIR}/habitat_on_stop.sh"
+copy_if_changed "${SRC_SCRIPTS_DIR}/habitat_init.sh" "${DEST_HOOKS_DIR}/habitat_init.sh"
+copy_if_changed "${SRC_COMMANDS_DIR}/habitat.md" "${DEST_COMMANDS_DIR}/habitat.md"
+copy_if_changed "${SRC_COMMANDS_DIR}/habitat-init.md" "${DEST_COMMANDS_DIR}/habitat-init.md"
 
-echo "Habitat installed."
-echo "Hooks copied to ${DEST_HOOKS_DIR}"
-echo "Command copied to ${DEST_COMMANDS_DIR}/habitat.md"
+chmod +x "${DEST_HOOKS_DIR}/habitat_on_tool.sh" "${DEST_HOOKS_DIR}/habitat_on_stop.sh" "${DEST_HOOKS_DIR}/habitat_init.sh"
+
+echo "Habitat installed (fallback mode)."
+echo "Recommended onboarding: claude plugin add habitat"
+echo "Then run: /habitat-init"
+echo "Fallback assets copied to ${DEST_HOOKS_DIR} and ${DEST_COMMANDS_DIR}"
