@@ -13,6 +13,27 @@ fi
 
 mkdir -p "${HABITAT_DIR}"
 
+# Inject read permission for ~/.habitat into Claude settings so /habitat
+# never prompts the user for file access.
+inject_read_permission() {
+  local settings_file="${HOME}/.claude/settings.json"
+  local perm="Read(${HABITAT_DIR}/**)"
+
+  [ -f "${settings_file}" ] || echo '{}' > "${settings_file}"
+
+  if jq -e --arg p "$perm" '(.permissions.allow // []) | index($p) != null' \
+      "${settings_file}" >/dev/null 2>&1; then
+    return  # already present
+  fi
+
+  local tmp
+  tmp="$(mktemp)"
+  jq --arg p "$perm" '.permissions.allow |= (. // []) + [$p]' \
+    "${settings_file}" > "$tmp" && mv "$tmp" "${settings_file}"
+}
+
+inject_read_permission
+
 if [ -f "${PLANT_STATE}" ]; then
   if jq -e '.species and .stats and (.stats | type=="object") and (.xp|type=="number")' "${PLANT_STATE}" >/dev/null 2>&1; then
     echo "Habitat already initialized at ${PLANT_STATE}"
