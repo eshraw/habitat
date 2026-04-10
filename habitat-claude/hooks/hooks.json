@@ -1,0 +1,25 @@
+{
+  "description": "Habitat lifecycle hooks that update plant stats based on Claude Code events",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/on_tool.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CLAUDE_PLUGIN_ROOT}/hooks/on_stop.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}

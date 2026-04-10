@@ -2,29 +2,7 @@
   "name": "habitat",
   "version": "0.1.0",
   "description": "A local-first Claude companion plant that evolves with coding activity.",
-  "minimum_claude_cli": "1.0.0",
-  "repository": "local",
-  "commands": [
-    {
-      "name": "habitat",
-      "path": "commands/habitat.md",
-      "description": "Render your Habitat companion plant"
-    },
-    {
-      "name": "habitat-init",
-      "path": "commands/habitat-init.md",
-      "description": "Initialize Habitat state"
-    }
-  ],
-  "hooks": [
-    {
-      "event": "PostToolUse",
-      "path": "hooks/on_tool.sh"
-    },
-    {
-      "event": "Stop",
-      "path": "hooks/on_stop.sh"
-    }
-  ],
-  "post_install_message": "Habitat installed. Next step: run /habitat-init before using /habitat."
+  "author": {
+    "name": "eshraw"
+  }
 }
