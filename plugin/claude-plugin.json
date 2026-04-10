@@ -7,12 +7,12 @@
   "commands": [
     {
       "name": "habitat",
-      "path": ".claude/commands/habitat.md",
+      "path": "commands/habitat.md",
       "description": "Render your Habitat companion plant"
     },
     {
       "name": "habitat-init",
-      "path": ".claude/commands/habitat-init.md",
+      "path": "commands/habitat-init.md",
       "description": "Initialize Habitat state"
     }
   ],

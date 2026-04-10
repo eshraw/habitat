@@ -2,9 +2,10 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-SRC_HOOKS_DIR="${ROOT_DIR}/hooks"
-SRC_COMMANDS_DIR="${ROOT_DIR}/.claude/commands"
-SRC_SCRIPTS_DIR="${ROOT_DIR}/scripts"
+PLUGIN_DIR="${ROOT_DIR}/plugin"
+SRC_HOOKS_DIR="${PLUGIN_DIR}/hooks"
+SRC_COMMANDS_DIR="${PLUGIN_DIR}/commands"
+SRC_SCRIPTS_DIR="${PLUGIN_DIR}/scripts"
 
 CLAUDE_DIR="${HOME}/.claude"
 DEST_HOOKS_DIR="${CLAUDE_DIR}/hooks"

@@ -43,7 +43,7 @@ Stats decay slowly over real time. A plant that is not visited wilts. A plant th
 
 ### Species
 
-Each species has a different visual identity, a different stat weighting, and different evolution triggers. Species are assigned randomly at spawn. The full list lives in `species/`. Do not hardcode species logic in hook scripts — always read from the species definition file.
+Each species has a different visual identity, a different stat weighting, and different evolution triggers. Species are assigned randomly at spawn. The full list lives in `plugin/species/`. Do not hardcode species logic in hook scripts — always read from the species definition file.
 
 ### Stages
 
@@ -79,20 +79,28 @@ The command file is a prompt template — Claude does the rendering, not a scrip
 habitat/
 ├── CLAUDE.md                  ← this file
 ├── README.md
-├── install.sh                 ← copies hooks and command into ~/.claude/
-├── hooks/
-│   ├── on_tool.sh             ← PostToolUse handler
-│   └── on_stop.sh             ← Stop handler
-├── species/
-│   ├── fern.json
-│   ├── cactus.json
-│   ├── moss.json
-│   ├── monstera.json
-│   ├── bonsai.json
-│   └── strangler_fig.json
-└── .claude/
-    └── commands/
-        └── habitat.md         ← the slash command prompt
+├── install.sh                 ← manual fallback: copies plugin files into ~/.claude/
+├── openspec/                  ← dev-only specs and change history
+├── scripts/                   ← dev-only validation scripts
+├── .claude/                   ← dev-only IDE commands (opsx, etc.)
+└── plugin/                    ← marketplace distributable (only this is installed)
+    ├── claude-plugin.json     ← plugin manifest
+    ├── commands/
+    │   ├── habitat.md         ← the slash command prompt
+    │   └── habitat-init.md    ← init command prompt
+    ├── hooks/
+    │   ├── lib.sh             ← shared shell library
+    │   ├── on_tool.sh         ← PostToolUse handler
+    │   └── on_stop.sh         ← Stop handler
+    ├── scripts/
+    │   └── habitat_init.sh    ← state bootstrap script
+    └── species/
+        ├── fern.json
+        ├── cactus.json
+        ├── moss.json
+        ├── monstera.json
+        ├── bonsai.json
+        └── strangler_fig.json
 ```
 
 ## Design principles
@@ -103,7 +111,7 @@ habitat/
 
 **State is append-friendly.** When adding new stats or milestone types, always add fields with defaults rather than restructuring the JSON. Old state files must always load cleanly.
 
-**Species are data, not code.** Adding a new species means adding a JSON file in `species/`. No code changes required. Species files define: name, stat weights, stage XP thresholds, ASCII art per stage, rare variants, and flavour adjectives Claude can use in commentary.
+**Species are data, not code.** Adding a new species means adding a JSON file in `plugin/species/`. No code changes required. Species files define: name, stat weights, stage XP thresholds, ASCII art per stage, rare variants, and flavour adjectives Claude can use in commentary.
 
 **Decay is gentle.** A plant should never die from a single missed day. Decay rates should feel like real plants — a fern notices after 3 days, a cactus after 3 weeks.
 
