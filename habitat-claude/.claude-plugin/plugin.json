@@ -4,5 +4,7 @@
   "description": "A local-first Claude companion plant that evolves with coding activity.",
   "author": {
     "name": "eshraw"
-  }
+  },
+  "commands": "./commands/",
+  "hooks": "./hooks/hooks.json"
 }
