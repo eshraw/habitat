@@ -6,5 +6,5 @@
     "name": "eshraw"
   },
   "commands": ["./commands/"],
-  "hooks": ["./hooks/hooks.json"]
+  "hooks": ["./hooks/"]
 }
