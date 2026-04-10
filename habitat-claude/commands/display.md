@@ -6,8 +6,12 @@ You are activating the Habitat plant status line display.
 
 1. Check that `~/.habitat/plant.json` exists. If it does not, stop and tell the user to run `/habitat-init` first.
 
-2. Read `~/.habitat/plant.json` and check `display_active`:
-   - If `display_active` is already `true`, tell the user the display is already active and show what it looks like: `🌿 <species> [·<stage>] HP:<health> HY:<hydration>`. Stop here.
+2. Read `~/.habitat/plant.json`. Check whether the statusline infrastructure is fully in place by verifying **all three**:
+   - `display_active` is `true` in plant.json
+   - `~/.claude/hooks/habitat_statusline.sh` exists
+   - `~/.claude/settings.json` contains a `statusLine` key
+
+   Only if all three are true, tell the user the display is already active and show what it looks like: `🌿 <species> [·<stage>] HP:<health> HY:<hydration>`. Stop here. Otherwise proceed to step 3 to set up whatever is missing.
 
 3. Run the following bash commands **in order**:
 

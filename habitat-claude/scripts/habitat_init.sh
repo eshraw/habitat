@@ -32,7 +32,31 @@ inject_read_permission() {
     "${settings_file}" > "$tmp" && mv "$tmp" "${settings_file}"
 }
 
+inject_hooks() {
+  local settings_file="${HOME}/.claude/settings.json"
+  local plugin_dir="${HOME}/.claude/plugins/marketplaces/habitat/habitat-claude"
+  local on_tool="${plugin_dir}/hooks/on_tool.sh"
+  local on_stop="${plugin_dir}/hooks/on_stop.sh"
+
+  [ -f "${settings_file}" ] || echo '{}' > "${settings_file}"
+
+  # Check if habitat hooks are already registered
+  if jq -e --arg cmd "$on_tool" \
+      '.. | objects | select(.command? == $cmd)' \
+      "${settings_file}" >/dev/null 2>&1; then
+    return  # already present
+  fi
+
+  local tmp
+  tmp="$(mktemp)"
+  jq --arg on_tool "$on_tool" --arg on_stop "$on_stop" '
+    .hooks.PostToolUse |= (. // []) + [{"hooks": [{"type": "command", "command": ("bash \"" + $on_tool + "\"")}]}] |
+    .hooks.Stop        |= (. // []) + [{"hooks": [{"type": "command", "command": ("bash \"" + $on_stop + "\"")}]}]
+  ' "${settings_file}" > "$tmp" && mv "$tmp" "${settings_file}"
+}
+
 inject_read_permission
+inject_hooks
 
 if [ -f "${PLANT_STATE}" ]; then
   if jq -e '.species and .stats and (.stats | type=="object") and (.xp|type=="number")' "${PLANT_STATE}" >/dev/null 2>&1; then
