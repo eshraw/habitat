@@ -1,6 +1,6 @@
 {
   "name": "habitat",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "A local-first Claude companion plant that evolves with coding activity.",
   "author": {
     "name": "eshraw"

@@ -32,7 +32,8 @@ default_state_for_species() {
     xp: 0,
     sessions: 0,
     seen_commands: [],
-    milestones: []
+    milestones: [],
+    display_active: false
   }'
 }
 
