@@ -39,11 +39,14 @@ copy_if_changed "${SRC_HOOKS_DIR}/on_tool.sh" "${DEST_HOOKS_DIR}/habitat_on_tool
 copy_if_changed "${SRC_HOOKS_DIR}/on_stop.sh" "${DEST_HOOKS_DIR}/habitat_on_stop.sh"
 copy_if_changed "${SRC_SCRIPTS_DIR}/habitat_init.sh" "${DEST_HOOKS_DIR}/habitat_init.sh"
 copy_if_changed "${SRC_COMMANDS_DIR}/habitat.md" "${DEST_COMMANDS_DIR}/habitat.md"
-copy_if_changed "${SRC_COMMANDS_DIR}/habitat-init.md" "${DEST_COMMANDS_DIR}/habitat-init.md"
+copy_if_changed "${SRC_COMMANDS_DIR}/init.md" "${DEST_COMMANDS_DIR}/init.md"
+copy_if_changed "${SRC_COMMANDS_DIR}/reset.md" "${DEST_COMMANDS_DIR}/reset.md"
+copy_if_changed "${SRC_COMMANDS_DIR}/clean.md" "${DEST_COMMANDS_DIR}/clean.md"
+copy_if_changed "${SRC_SCRIPTS_DIR}/habitat_clean.sh" "${DEST_HOOKS_DIR}/habitat_clean.sh"
 
-chmod +x "${DEST_HOOKS_DIR}/habitat_on_tool.sh" "${DEST_HOOKS_DIR}/habitat_on_stop.sh" "${DEST_HOOKS_DIR}/habitat_init.sh"
+chmod +x "${DEST_HOOKS_DIR}/habitat_on_tool.sh" "${DEST_HOOKS_DIR}/habitat_on_stop.sh" "${DEST_HOOKS_DIR}/habitat_init.sh" "${DEST_HOOKS_DIR}/habitat_clean.sh"
 
 echo "Habitat installed (fallback mode)."
 echo "Recommended onboarding: claude plugin add habitat"
-echo "Then run: /habitat-init"
+echo "Then run: /hbt:init"
 echo "Fallback assets copied to ${DEST_HOOKS_DIR} and ${DEST_COMMANDS_DIR}"

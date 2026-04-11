@@ -22,4 +22,4 @@ Rules:
 - Do not invent species values not present in the JSON file.
 - Keep output concise and friendly.
 - If `dormant` is true, mention recovery potential in the commentary.
-- If state is missing/uninitialized, output only a short setup hint pointing to `/habitat-init`.
+- If state is missing/uninitialized, output only a short setup hint pointing to `/hbt:init`.

@@ -35,7 +35,7 @@ claude plugin add habitat
 Then run:
 
 ```text
-/habitat-init
+/hbt:init
 ```
 
 Compatibility fallback (repository install script):
@@ -49,7 +49,7 @@ Installer behavior:
 - Creates `~/.claude/hooks`, `~/.claude/commands`, and `~/.habitat` if needed.
 - Copies hooks and command template into your Claude directories.
 - Is idempotent: re-running updates files without duplicate setup.
-- Prints plugin-first guidance (`claude plugin add habitat` + `/habitat-init`).
+- Prints plugin-first guidance (`claude plugin add habitat` + `/hbt:init`).
 
 ## Hook behavior (v1)
 
@@ -75,5 +75,5 @@ What they verify:
 - Species schema shape and required fields.
 - State initialization, event mutations, and stop-session behavior.
 - Hooks remain silent on stdout (non-interactive behavior).
-- Plugin metadata and `/habitat-init` idempotency.
+- Plugin metadata and `/hbt:init` idempotency.
 - Migration fallback behavior for users coming from script-based setup.
