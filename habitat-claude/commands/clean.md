@@ -13,15 +13,20 @@ You are handling a full Habitat cleanup for the user.
 
 2. Ask the user to confirm. If they say **no** or anything ambiguous, cancel immediately with a short message like "Cleanup cancelled. Your plant is safe." and stop.
 
-3. If the user says **yes**, run:
+3. If the user says **yes**, locate and run `habitat_clean.sh` by trying these paths in order until one exists:
+   1. `~/.claude/plugins/cache/habitat/habitat/*/scripts/habitat_clean.sh` (plugin install, glob for version)
+   2. `~/.claude/hooks/habitat_clean.sh` (install.sh-based install)
+   3. Fail with: "Could not find habitat_clean.sh. Try reinstalling Habitat or deleting `~/.habitat/` manually."
+
+   Run it with:
    ```
-   bash ~/.claude/hooks/habitat_clean.sh
+   bash "<resolved_path>"
    ```
 
 4. Report what was removed based on the script output (removed/skipped lines).
 
 5. Close with:
-   > "Habitat has been fully removed — all commands, hooks, and state have been deleted. Reinstall via the plugin marketplace or `install.sh` if you ever want to start again."
+   > "Habitat has been fully removed. Run `/hbt:init` if you ever want to start again."
 
 Rules:
 - Never skip the confirmation step.
