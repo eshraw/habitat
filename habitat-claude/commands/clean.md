@@ -15,14 +15,13 @@ You are handling a full Habitat cleanup for the user.
 
 3. If the user says **yes**, run:
    ```
-   bash "<plugin_scripts_dir>/habitat_clean.sh"
+   bash ~/.claude/hooks/habitat_clean.sh
    ```
-   where `<plugin_scripts_dir>` is the `scripts/` directory inside the installed plugin.
 
 4. Report what was removed based on the script output (removed/skipped lines).
 
 5. Close with:
-   > "Habitat has been fully removed. Run `/hbt:init` if you ever want to start again."
+   > "Habitat has been fully removed — all commands, hooks, and state have been deleted. Reinstall via the plugin marketplace or `install.sh` if you ever want to start again."
 
 Rules:
 - Never skip the confirmation step.
