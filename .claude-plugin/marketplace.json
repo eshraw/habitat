@@ -8,7 +8,7 @@
         "name": "habitat",
         "source": "./habitat-claude",
         "description": "A local-first Claude companion plant that evolves with coding activity.",
-        "version": "0.1.4"
+        "version": "0.1.5"
       }
     ]
   }
