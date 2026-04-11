@@ -9,6 +9,11 @@ if ! command -v jq >/dev/null 2>&1; then
   exit 0
 fi
 
+# Bail out if habitat has not been initialized — do not auto-create state.
+if [ ! -f "${PLANT_STATE}" ]; then
+  exit 0
+fi
+
 payload="$(cat)"
 ensure_state
 state="$(read_state)"
