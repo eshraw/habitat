@@ -1,0 +1,29 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(/Users/eshane.rawat/Documents/habitat/.tmp/hook-smoke/state/**)"
+    ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/eshane.rawat/Documents/habitat/.tmp/hook-smoke/home/.claude/plugins/marketplaces/habitat/habitat-claude/hooks/on_tool.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"/Users/eshane.rawat/Documents/habitat/.tmp/hook-smoke/home/.claude/plugins/marketplaces/habitat/habitat-claude/hooks/on_stop.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}

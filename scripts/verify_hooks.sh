@@ -25,12 +25,15 @@ assert_jq() {
   jq -e "${expr}" "${STATE_FILE}" >/dev/null
 }
 
-run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","tool_name":"create_file"}'
+run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","tool_name":"Write"}'
 assert_jq '.xp >= 5'
 assert_jq '.stats.growth >= 49'
 
-run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","tool_name":"bash_tool","command":"git status"}'
+run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","tool_name":"Bash","command":"git status"}'
 assert_jq '.stats.hydration >= 63'
+
+run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","tool_name":"WebSearch"}'
+assert_jq '.stats.curiosity >= 74'
 
 run_and_assert_silent "${ROOT_DIR}/hooks/on_stop.sh" '{"event":"Stop"}'
 assert_jq '.sessions >= 1'

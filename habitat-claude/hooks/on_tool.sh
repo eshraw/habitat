@@ -17,7 +17,8 @@ fi
 payload="$(cat)"
 ensure_state
 state="$(read_state)"
-tool_name="$(printf "%s" "${payload}" | jq -r '.tool_name // .toolName // .tool // empty' 2>/dev/null || true)"
+tool_name_raw="$(printf "%s" "${payload}" | jq -r '.tool_name // .toolName // .tool // empty' 2>/dev/null || true)"
+tool_name="$(printf "%s" "${tool_name_raw}" | tr '[:upper:]' '[:lower:]')"
 event_name="$(printf "%s" "${payload}" | jq -r '.event // .event_name // empty' 2>/dev/null || true)"
 success="$(printf "%s" "${payload}" | jq -r '.success // .ok // false' 2>/dev/null || echo "false")"
 raw_command="$(printf "%s" "${payload}" | jq -r '.command // .args.command // .input.command // empty' 2>/dev/null || true)"
@@ -40,10 +41,10 @@ if [ "${event_name}" = "PostToolUse" ] || [ -n "${tool_name}" ]; then
         fi
       fi
       ;;
-    str_replace|create_file)
+    write|edit|str_replace|create_file)
       updated="$(printf "%s" "${updated}" | jq '.stats.growth = ((.stats.growth + 4) | if . > 100 then 100 else . end) | .stats.rootedness = ((.stats.rootedness + 2) | if . > 100 then 100 else . end) | .xp += 5')"
       ;;
-    web_search)
+    websearch|web_search)
       updated="$(printf "%s" "${updated}" | jq '.stats.curiosity = ((.stats.curiosity + 4) | if . > 100 then 100 else . end) | .xp += 3')"
       ;;
   esac

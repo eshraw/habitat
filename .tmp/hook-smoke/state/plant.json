@@ -1,0 +1,26 @@
+{
+  "species": "monstera",
+  "stage": 0,
+  "name": null,
+  "dormant": false,
+  "born": "2026-04-13T13:53:27Z",
+  "last_seen": "2026-04-13T13:53:28Z",
+  "stats": {
+    "health": 80,
+    "growth": 49,
+    "hydration": 63,
+    "curiosity": 77,
+    "rootedness": 57
+  },
+  "xp": 13,
+  "sessions": 0,
+  "seen_commands": [
+    "git"
+  ],
+  "milestones": [],
+  "display_active": false,
+  "render_hint": {
+    "dominant_stat": "health",
+    "rare_variant": ""
+  }
+}
