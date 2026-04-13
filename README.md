@@ -2,6 +2,8 @@
 
 Habitat is a Claude Code companion system. It gives you a living plant that evolves as you code.
 
+<img src="openspec/specs/specs-assets/image.png" alt="habitat-plant"/>
+
 ## What it does
 
 - Adds a `/habitat` command that renders your plant in chat.
