@@ -8,7 +8,13 @@
     "curiosity": 1.0,
     "rootedness": 1.2
   },
-  "stage_thresholds": [0, 120, 300, 650, 1200],
+  "stage_thresholds": [
+    0,
+    220,
+    560,
+    1180,
+    2200
+  ],
   "stage_art": {
     "seed": ".",
     "sprout": " .\n/|\\",
@@ -26,5 +32,11 @@
       "curiosity": "silver-vein fern"
     }
   },
-  "flavor_adjectives": ["verdant", "gentle", "observant", "resilient"]
+  "flavor_adjectives": [
+    "verdant",
+    "gentle",
+    "observant",
+    "resilient"
+  ],
+  "xp_rate": 1.0
 }

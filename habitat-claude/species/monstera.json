@@ -8,7 +8,13 @@
     "curiosity": 1.2,
     "rootedness": 1.0
   },
-  "stage_thresholds": [0, 130, 340, 700, 1280],
+  "stage_thresholds": [
+    0,
+    240,
+    610,
+    1280,
+    2380
+  ],
   "stage_art": {
     "seed": ".",
     "sprout": " /\\\n ||",
@@ -26,5 +32,11 @@
       "rootedness": "pillar vine monarch"
     }
   },
-  "flavor_adjectives": ["bold", "playful", "radiant", "explorative"]
+  "flavor_adjectives": [
+    "bold",
+    "playful",
+    "radiant",
+    "explorative"
+  ],
+  "xp_rate": 0.9
 }

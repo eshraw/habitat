@@ -89,6 +89,20 @@ species_file() {
   echo "${SPECIES_DIR}/${species}.json"
 }
 
+species_xp_rate_or_default() {
+  local species="$1"
+  local file
+  file="$(species_file "${species}")"
+  if [ ! -f "${file}" ]; then
+    echo "1.0"
+    return
+  fi
+  local rate
+  rate="$(jq -r 'if (.xp_rate | type) == "number" and .xp_rate > 0 then .xp_rate else 1.0 end' "${file}" 2>/dev/null || echo "1.0")"
+  # clamp to [0.1, 2.0]
+  jq -nr --argjson r "${rate}" '[$r, 0.1] | max | [., 2.0] | min'
+}
+
 species_thresholds_or_default() {
   local species="$1"
   local file

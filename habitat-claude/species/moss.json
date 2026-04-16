@@ -8,7 +8,13 @@
     "curiosity": 0.8,
     "rootedness": 1.3
   },
-  "stage_thresholds": [0, 100, 260, 560, 1020],
+  "stage_thresholds": [
+    0,
+    200,
+    500,
+    1050,
+    1900
+  ],
   "stage_art": {
     "seed": ".",
     "sprout": "..\n::",
@@ -26,5 +32,11 @@
       "curiosity": "starlight moss"
     }
   },
-  "flavor_adjectives": ["calm", "cozy", "quiet", "persistent"]
+  "flavor_adjectives": [
+    "calm",
+    "cozy",
+    "quiet",
+    "persistent"
+  ],
+  "xp_rate": 1.2
 }

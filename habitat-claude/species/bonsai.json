@@ -8,7 +8,13 @@
     "curiosity": 1.1,
     "rootedness": 1.6
   },
-  "stage_thresholds": [0, 150, 390, 820, 1500],
+  "stage_thresholds": [
+    0,
+    280,
+    720,
+    1520,
+    2800
+  ],
   "stage_art": {
     "seed": ".",
     "sprout": " |\n/ \\",
@@ -26,5 +32,11 @@
       "growth": "storm-tempered bonsai"
     }
   },
-  "flavor_adjectives": ["deliberate", "balanced", "attentive", "wise"]
+  "flavor_adjectives": [
+    "deliberate",
+    "balanced",
+    "attentive",
+    "wise"
+  ],
+  "xp_rate": 0.5
 }

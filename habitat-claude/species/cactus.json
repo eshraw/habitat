@@ -8,7 +8,13 @@
     "curiosity": 1.0,
     "rootedness": 1.5
   },
-  "stage_thresholds": [0, 140, 360, 760, 1400],
+  "stage_thresholds": [
+    0,
+    260,
+    670,
+    1420,
+    2650
+  ],
   "stage_art": {
     "seed": ".",
     "sprout": " |\n/ \\",
@@ -26,5 +32,11 @@
       "hydration": "oasis lantern cactus"
     }
   },
-  "flavor_adjectives": ["stoic", "focused", "steady", "enduring"]
+  "flavor_adjectives": [
+    "stoic",
+    "focused",
+    "steady",
+    "enduring"
+  ],
+  "xp_rate": 0.7
 }

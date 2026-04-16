@@ -30,24 +30,36 @@ if [ "${event_name}" = "Notification" ] && [ "${success}" = "true" ]; then
   updated="$(printf "%s" "${updated}" | jq '.stats.health = ((.stats.health + 4) | if . > 100 then 100 else . end)')"
 fi
 
+xp_delta=0
 if [ "${event_name}" = "PostToolUse" ] || [ -n "${tool_name}" ]; then
   case "${tool_name}" in
     bash_tool|bash)
-      updated="$(printf "%s" "${updated}" | jq '.stats.hydration = ((.stats.hydration + 3) | if . > 100 then 100 else . end) | .xp += 2')"
+      updated="$(printf "%s" "${updated}" | jq '.stats.hydration = ((.stats.hydration + 3) | if . > 100 then 100 else . end)')"
+      xp_delta=1
       if [ -n "${command_sig}" ]; then
         seen="$(printf "%s" "${updated}" | jq -r --arg sig "${command_sig}" '.seen_commands | index($sig) | if . == null then "no" else "yes" end')"
         if [ "${seen}" = "no" ]; then
-          updated="$(printf "%s" "${updated}" | jq --arg sig "${command_sig}" '.stats.curiosity = ((.stats.curiosity + 3) | if . > 100 then 100 else . end) | .seen_commands += [$sig] | .xp += 3')"
+          updated="$(printf "%s" "${updated}" | jq --arg sig "${command_sig}" '.stats.curiosity = ((.stats.curiosity + 3) | if . > 100 then 100 else . end) | .seen_commands += [$sig]')"
+          xp_delta=$((xp_delta + 2))
         fi
       fi
       ;;
     write|edit|str_replace|create_file|str_replace_based_edit_tool)
-      updated="$(printf "%s" "${updated}" | jq '.stats.growth = ((.stats.growth + 4) | if . > 100 then 100 else . end) | .stats.rootedness = ((.stats.rootedness + 2) | if . > 100 then 100 else . end) | .xp += 5')"
+      updated="$(printf "%s" "${updated}" | jq '.stats.growth = ((.stats.growth + 4) | if . > 100 then 100 else . end) | .stats.rootedness = ((.stats.rootedness + 2) | if . > 100 then 100 else . end)')"
+      xp_delta=3
       ;;
     websearch|web_search)
-      updated="$(printf "%s" "${updated}" | jq '.stats.curiosity = ((.stats.curiosity + 4) | if . > 100 then 100 else . end) | .xp += 3')"
+      updated="$(printf "%s" "${updated}" | jq '.stats.curiosity = ((.stats.curiosity + 4) | if . > 100 then 100 else . end)')"
+      xp_delta=2
       ;;
   esac
+fi
+
+if [ "${xp_delta}" -gt 0 ]; then
+  current_species="$(printf "%s" "${updated}" | jq -r '.species')"
+  xp_rate="$(species_xp_rate_or_default "${current_species}")"
+  xp_gain="$(jq -nr --argjson d "${xp_delta}" --argjson r "${xp_rate}" '($d * $r) | floor | if . < 1 then 1 else . end')"
+  updated="$(printf "%s" "${updated}" | jq --argjson gain "${xp_gain}" '.xp += $gain')"
 fi
 
 species="$(printf "%s" "${updated}" | jq -r '.species')"
