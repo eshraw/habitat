@@ -41,7 +41,7 @@ if [ "${event_name}" = "PostToolUse" ] || [ -n "${tool_name}" ]; then
         fi
       fi
       ;;
-    write|edit|str_replace|create_file)
+    write|edit|str_replace|create_file|str_replace_based_edit_tool)
       updated="$(printf "%s" "${updated}" | jq '.stats.growth = ((.stats.growth + 4) | if . > 100 then 100 else . end) | .stats.rootedness = ((.stats.rootedness + 2) | if . > 100 then 100 else . end) | .xp += 5')"
       ;;
     websearch|web_search)

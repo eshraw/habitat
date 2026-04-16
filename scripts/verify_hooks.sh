@@ -29,6 +29,10 @@ run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","to
 assert_jq '.xp >= 5'
 assert_jq '.stats.growth >= 49'
 
+run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","tool_name":"str_replace_based_edit_tool"}'
+assert_jq '.xp >= 10'
+assert_jq '.stats.growth >= 53'
+
 run_and_assert_silent "${ROOT_DIR}/hooks/on_tool.sh" '{"event":"PostToolUse","tool_name":"Bash","command":"git status"}'
 assert_jq '.stats.hydration >= 63'
 
