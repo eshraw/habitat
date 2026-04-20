@@ -31,7 +31,7 @@ Habitat is a Claude Code companion system. It gives you a living plant that evol
 Recommended (plugin-first):
 
 ```bash
-claude plugin add habitat
+claude plugin add eshraw/habitat
 ```
 
 Then run:
