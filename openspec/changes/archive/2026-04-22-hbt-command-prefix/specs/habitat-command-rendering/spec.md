@@ -1,4 +1,4 @@
-## ADDED Requirements
+## MODIFIED Requirements
 
 ### Requirement: Command-driven spawn and load flow
 The `/hbt:habitat` command SHALL read existing plant state and spawn a new plant with random species and initial stage when state is absent. All sub-commands (`hbt:water`, `hbt:info`, `hbt:clue`, `hbt:display`, `hbt:reset`, `hbt:init`, `hbt:clean`) SHALL be invoked using the `hbt:` prefix.
@@ -14,17 +14,3 @@ The `/hbt:habitat` command SHALL read existing plant state and spawn a new plant
 #### Scenario: Sub-command invocation with hbt prefix
 - **WHEN** a user invokes any habitat sub-command (e.g., `/hbt:water`)
 - **THEN** the command executes as expected, identical to prior `habitat:` behavior
-
-### Requirement: Claude-rendered visual and commentary output
-The command MUST delegate stage visual selection and personality commentary generation to Claude using species and state context.
-
-#### Scenario: Render with dominant-stat mood
-- **WHEN** the command has species art data and current stats
-- **THEN** Claude renders the stage-appropriate form and writes 1-2 commentary sentences aligned with dominant stat and mood
-
-### Requirement: Minimal stats presentation
-The command SHALL display stats in a compact textual or bar-style representation suitable for chat output.
-
-#### Scenario: Display state summary
-- **WHEN** rendering completes
-- **THEN** the output includes a minimal stats representation for key plant metrics
