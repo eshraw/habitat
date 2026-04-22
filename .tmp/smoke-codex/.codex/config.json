@@ -1,0 +1,12 @@
+{
+  "plugins": {
+    "habitat": {
+      "enabled": true,
+      "path": "/Users/eshanerawat/Documents/GitHub/habitat/.tmp/smoke-codex/.codex/plugins/habitat",
+      "hooks": {
+        "PostToolUse": "bash \"/Users/eshanerawat/Documents/GitHub/habitat/.tmp/smoke-codex/.codex/plugins/habitat/hooks/on_tool.sh\"",
+        "Stop": "bash \"/Users/eshanerawat/Documents/GitHub/habitat/.tmp/smoke-codex/.codex/plugins/habitat/hooks/on_stop.sh\""
+      }
+    }
+  }
+}
