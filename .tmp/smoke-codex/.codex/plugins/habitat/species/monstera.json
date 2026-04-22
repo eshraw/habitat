@@ -1,0 +1,42 @@
+{
+  "name": "Monstera",
+  "description": "A dramatic climber with bold split leaves.",
+  "stat_weights": {
+    "health": 1.0,
+    "growth": 1.4,
+    "hydration": 1.2,
+    "curiosity": 1.2,
+    "rootedness": 1.0
+  },
+  "stage_thresholds": [
+    0,
+    240,
+    610,
+    1280,
+    2380
+  ],
+  "stage_art": {
+    "seed": ".",
+    "sprout": " /\\\n ||",
+    "juvenile": " /\\ /\\\n  ||||",
+    "mature": " /\\/\\/\\\n  ||||||",
+    "ancient": " /\\/\\/\\/\\\n  ||||||||"
+  },
+  "rare_variants": {
+    "mature": {
+      "growth": "double-split canopy",
+      "curiosity": "spiral fenestration"
+    },
+    "ancient": {
+      "hydration": "rain-slick monstera",
+      "rootedness": "pillar vine monarch"
+    }
+  },
+  "flavor_adjectives": [
+    "bold",
+    "playful",
+    "radiant",
+    "explorative"
+  ],
+  "xp_rate": 0.9
+}

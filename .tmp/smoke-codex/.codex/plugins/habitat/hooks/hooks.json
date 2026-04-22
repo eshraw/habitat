@@ -1,0 +1,25 @@
+{
+  "description": "Habitat lifecycle hooks for Codex harness events",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CODEX_PLUGIN_ROOT}/hooks/on_tool.sh\""
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"${CODEX_PLUGIN_ROOT}/hooks/on_stop.sh\""
+          }
+        ]
+      }
+    ]
+  }
+}

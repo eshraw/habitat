@@ -1,0 +1,14 @@
+{
+  "name": "habitat",
+  "version": "0.1.7",
+  "description": "A local-first companion plant that evolves with coding activity.",
+  "author": {
+    "name": "eshraw"
+  },
+  "runtime": "codex-harness",
+  "install_root": "~/.codex/plugins/habitat",
+  "commands_dir": "commands",
+  "hooks_config": "hooks/hooks.json",
+  "init_script": "scripts/habitat_init.sh",
+  "minimum_codex_version": "1.0.0"
+}
