@@ -17,10 +17,10 @@
   ],
   "stage_art": {
     "seed": ".",
-    "sprout": " /\\\n ||",
-    "juvenile": " /\\ /\\\n  ||||",
-    "mature": " /\\/\\/\\\n  ||||||",
-    "ancient": " /\\/\\/\\/\\\n  ||||||||"
+    "sprout": " /\\\n ||\n  |",
+    "juvenile": "(OO)\nd||b\n |",
+    "mature": "(O O)\nd\\|/b\nd\\|/b\n  |",
+    "ancient": "(O O O)\nd\\|||/b\n(O O O)\nd\\|||/b\n  \\|/\n   |"
   },
   "rare_variants": {
     "mature": {
