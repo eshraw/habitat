@@ -23,3 +23,8 @@ Rules:
 - Keep output concise and friendly.
 - If `dormant` is true, mention recovery potential in the commentary.
 - If state is missing/uninitialized, output only a short setup hint pointing to `/hbt:init`.
+
+Cabinet commands (mention briefly at the end if this is a first render or the user seems new):
+- `/hbt:habitat-stash` — freeze your current plant into the cabinet and free the active slot
+- `/hbt:habitat-cabinet` — view all your stashed plants
+- `/hbt:habitat-swap` — swap a cabinet plant into the active slot

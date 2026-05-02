@@ -12,6 +12,7 @@ if ! command -v jq >/dev/null 2>&1; then
 fi
 
 mkdir -p "${HABITAT_DIR}"
+mkdir -p "${HABITAT_DIR}/cabinet"
 
 # Inject read permission for ~/.habitat into Claude settings so /habitat
 # never prompts the user for file access.

@@ -8,7 +8,7 @@ Initialize Habitat for this user.
 2. From the habitat repository root, run:
    - `bash "./scripts/habitat_init.sh"`
 3. Report one of:
-   - success with state path and selected species (first init)
+   - success with state path, selected species, and confirmation that `~/.habitat/cabinet/` was created (first init)
    - already initialized (idempotent rerun)
    - clear remediation when `jq` is missing
 

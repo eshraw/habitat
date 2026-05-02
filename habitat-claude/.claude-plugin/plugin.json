@@ -1,8 +1,21 @@
 {
   "name": "hbt",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "A local-first Claude companion plant that evolves with coding activity.",
   "author": {
     "name": "eshraw"
-  }
+  },
+  "commands": [
+    { "name": "habitat", "description": "Render your Habitat companion plant" },
+    { "name": "init", "description": "Initialize Habitat state and runtime prerequisites" },
+    { "name": "water", "description": "Water your plant to restore hydration" },
+    { "name": "info", "description": "View detailed stats and species info for your plant" },
+    { "name": "clue", "description": "Get hints on how to help your plant grow" },
+    { "name": "reset", "description": "Reset your plant and start fresh with a new companion" },
+    { "name": "display", "description": "Activate the persistent plant display in the Claude Code status line" },
+    { "name": "clean", "description": "Remove all Habitat local state and settings" },
+    { "name": "habitat-stash", "description": "Stash your current plant into the cabinet" },
+    { "name": "habitat-cabinet", "description": "View all stashed plants in your cabinet" },
+    { "name": "habitat-swap", "description": "Swap your active plant with one from the cabinet" }
+  ]
 }
